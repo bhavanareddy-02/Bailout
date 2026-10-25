@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bailout: your house’s agents bail you out</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&amp;family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F7F6}
+a{color:#0B5A70}a:hover{color:#0B3F55}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+</helmet>
+<div style="font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; color: #10242E; background: #F3F7F6; font-size: 1.0625rem; line-height: 1.55">
+
+<header style="background: #0B3F55; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 32px 104px; box-sizing: border-box">
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; color: #FFFFFF; text-decoration: none">
+<svg width="36" height="36" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#FFFFFF" stroke-width="20"></circle><circle cx="50" cy="50" r="34" fill="none" stroke="{{ring}}" stroke-width="20" stroke-dasharray="26.7 26.7" stroke-dashoffset="13"></circle></svg>
+<span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.01em">Bailout</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-weight: 700">
+<a href="#how" style="color: #D6E8EC; text-decoration: none">How it works</a>
+<a href="#privacy" style="color: #D6E8EC; text-decoration: none">What stays private</a>
+<a href="#cubbie" style="color: #D6E8EC; text-decoration: none">Cubbie bridge</a>
+<a href="https://github.com/SrujanRudrapati/bailout" style="color: #D6E8EC; text-decoration: none">GitHub</a>
+</div>
+</nav>
+
+<div id="top" style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px; margin-top: 80px">
+<div style="flex: 1 1 480px; min-width: 0">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 4.25rem; line-height: 1.02; letter-spacing: -0.03em">Swamped? Your house’s agents bid to bail you out.</h1>
+<p style="margin: 28px 0 0; font-size: 1.3rem; line-height: 1.5; color: #D6E8EC; max-width: 34rem">Every roommate gets a personal agent. When one of you is buried in deadlines, the agents bid on your chores. Whoever minds it least takes it, earns favor credits, and gets paid back when they’re the one drowning.</p>
+<p style="margin: 16px 0 0; font-size: 1.3rem; font-weight: 700; color: {{ring}}">Nobody ever learns why you’re busy.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px">
+<a href="#demo" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: {{ring}}; color: #0B3F55; font-weight: 700; text-decoration: none">Watch the demo</a>
+<a href="https://github.com/SrujanRudrapati/bailout" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 2px solid #D6E8EC; color: #FFFFFF; font-weight: 700; text-decoration: none">View the code</a>
+</div>
+</div>
+
+<div style="flex: 1 1 420px; min-width: 0; background: #082F40; border: 1px solid #1E5A6E; border-radius: 18px; overflow: hidden">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 22px; border-bottom: 1px solid #1E5A6E">
+<span style="font-weight: 700; color: #FFFFFF"># agent-floor</span>
+<span style="font-size: 0.875rem; color: #B9D3DA">a real test run</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 22px">
+<sc-for list="{{floor}}" as="m" hint-placeholder-count="5">
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="50" cy="50" r="34" fill="none" stroke="#FFFFFF" stroke-width="20"></circle><circle cx="50" cy="50" r="34" fill="none" stroke="#FFC93C" stroke-width="20" stroke-dasharray="26.7 26.7" stroke-dashoffset="13"></circle></svg>
+<div style="min-width: 0">
+<div style="font-size: 0.875rem; font-weight: 700; color: #B9D3DA">{{m.who}}</div>
+<div style="color: #FFFFFF">{{m.text}}</div>
+</div>
+</div>
+</sc-for>
+<div style="margin-top: 6px; padding: 16px 18px; border-radius: 14px; background: #F3F7F6; color: #10242E">
+<div style="font-size: 0.875rem; font-weight: 700; color: #4A5D66">Private message to Jordan</div>
+<div style="margin-top: 4px">you won dishes for 9.0 credits. take it?</div>
+<div style="display: flex; gap: 10px; margin-top: 12px">
+<span style="padding: 6px 16px; border-radius: 999px; background: #0B3F55; color: #FFFFFF; font-weight: 700; font-size: 0.9375rem">Take it</span>
+<span style="padding: 6px 16px; border-radius: 999px; border: 2px solid #0B3F55; color: #0B3F55; font-weight: 700; font-size: 0.9375rem">Pass</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<section id="how" style="max-width: 1200px; margin: 0 auto; padding: 104px 32px 40px; box-sizing: border-box">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; line-height: 1.05; letter-spacing: -0.02em; max-width: 44rem">How a bailout works</h2>
+<p style="margin: 18px 0 0; font-size: 1.2rem; color: #4A5D66; max-width: 40rem">Four steps, and a human says yes at every one that matters.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 48px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+<div style="flex: 1 1 240px; min-width: 0; padding: 28px; background: #FFFFFF; border: 1px solid #D3E0E3; border-radius: 18px">
+<div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 999px; background: #0B3F55; color: {{ring}}; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.4rem">{{s.n}}</div>
+<h3 style="margin: 20px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.4rem; line-height: 1.2">{{s.title}}</h3>
+<p style="margin: 10px 0 0; color: #3A4D56">{{s.body}}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; line-height: 1.05; letter-spacing: -0.02em; max-width: 44rem">Built for the real roommate fight</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 40px 56px; margin-top: 44px">
+<sc-for list="{{promises}}" as="p" hint-placeholder-count="3">
+<div style="flex: 1 1 280px; min-width: 0; border-top: 4px solid #0B3F55; padding-top: 22px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.6rem; line-height: 1.15">{{p.title}}</h3>
+<p style="margin: 12px 0 0; color: #3A4D56">{{p.body}}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="privacy" style="max-width: 1200px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; line-height: 1.05; letter-spacing: -0.02em; max-width: 44rem">What your agent knows, and what anyone else sees</h2>
+<div style="margin-top: 40px; overflow-x: auto; border: 1px solid #D3E0E3; border-radius: 18px; background: #FFFFFF">
+<table style="width: 100%; min-width: 720px; border-collapse: collapse; text-align: left">
+<thead>
+<tr style="background: #0B3F55; color: #FFFFFF">
+<th scope="col" style="padding: 16px 22px; font-weight: 700">The thing</th>
+<th scope="col" style="padding: 16px 22px; font-weight: 700">Your agent</th>
+<th scope="col" style="padding: 16px 22px; font-weight: 700">Other agents</th>
+<th scope="col" style="padding: 16px 22px; font-weight: 700">The floor</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #E3ECEE">
+<th scope="row" style="padding: 16px 22px; font-weight: 700">Why you’re busy (deadlines, grades)</th>
+<td style="padding: 16px 22px">Never. It stays in Cubbie</td>
+<td style="padding: 16px 22px">Never</td>
+<td style="padding: 16px 22px">Never</td>
+</tr>
+<tr style="border-top: 1px solid #E3ECEE">
+<th scope="row" style="padding: 16px 22px; font-weight: 700">Your exact busy level</th>
+<td style="padding: 16px 22px">Knows it</td>
+<td style="padding: 16px 22px">Never</td>
+<td style="padding: 16px 22px">Only low, medium or high</td>
+</tr>
+<tr style="border-top: 1px solid #E3ECEE">
+<th scope="row" style="padding: 16px 22px; font-weight: 700">How much you mind each chore</th>
+<td style="padding: 16px 22px">Knows it</td>
+<td style="padding: 16px 22px">Never</td>
+<td style="padding: 16px 22px">Never</td>
+</tr>
+<tr style="border-top: 1px solid #E3ECEE">
+<th scope="row" style="padding: 16px 22px; font-weight: 700">Your credit cap</th>
+<td style="padding: 16px 22px">Knows it, asks you before going over</td>
+<td style="padding: 16px 22px">Never</td>
+<td style="padding: 16px 22px">Never</td>
+</tr>
+<tr style="border-top: 1px solid #E3ECEE">
+<th scope="row" style="padding: 16px 22px; font-weight: 700">Who said no</th>
+<td style="padding: 16px 22px">Only your own answer</td>
+<td style="padding: 16px 22px">Never</td>
+<td style="padding: 16px 22px">“One agent passed”</td>
+</tr>
+<tr style="border-top: 1px solid #E3ECEE">
+<th scope="row" style="padding: 16px 22px; font-weight: 700">Your bid on a chore</th>
+<td style="padding: 16px 22px">Works it out</td>
+<td style="padding: 16px 22px">Sees it</td>
+<td style="padding: 16px 22px">Sees it</td>
+</tr>
+<tr style="border-top: 1px solid #E3ECEE">
+<th scope="row" style="padding: 16px 22px; font-weight: 700">Your credit balance</th>
+<td style="padding: 16px 22px">Knows it</td>
+<td style="padding: 16px 22px">Sees it</td>
+<td style="padding: 16px 22px">Sees it</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin: 48px 0 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 2rem; line-height: 1.2; letter-spacing: -0.01em; max-width: 52rem">Plain code decides who wins and what it costs. The language model only writes the messages.</p>
+<p style="margin: 14px 0 0; color: #4A5D66; max-width: 44rem">The auction and the ledger are ordinary, tested Python. A model never sees your private numbers, so it can’t leak them.</p>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 420px; min-width: 0">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; line-height: 1.05; letter-spacing: -0.02em">The ledger remembers, so nobody has to</h2>
+<p style="margin: 20px 0 0; font-size: 1.2rem; color: #3A4D56">Credits are favors, not money, and the ledger always adds up to zero. When Jordan is the one drowning, his agent asks Maya’s agent first, because she owes him the most. Both of them say yes before anything moves.</p>
+</div>
+<div style="flex: 1 1 360px; min-width: 0; padding: 28px; background: #FFFFFF; border: 1px solid #D3E0E3; border-radius: 18px">
+<div style="font-weight: 700; color: #4A5D66">Ledger after two chores</div>
+<div style="display: flex; flex-direction: column; margin-top: 12px">
+<sc-for list="{{ledger}}" as="l" hint-placeholder-count="3">
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid #E3ECEE; font-size: 1.2rem">
+<span style="font-weight: 700">{{l.name}}</span>
+<span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace">{{l.value}}</span>
+</div>
+</sc-for>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding-top: 14px; font-size: 1.2rem; font-weight: 700">
+<span>Total</span>
+<span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace">0.0</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cubbie" style="background: #0B3F55; color: #FFFFFF; margin-top: 40px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 32px; box-sizing: border-box">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; line-height: 1.05; letter-spacing: -0.02em; max-width: 44rem">Your agent already lives in your texts</h2>
+<p style="margin: 20px 0 0; font-size: 1.2rem; color: #D6E8EC; max-width: 44rem">Bailout connects to Cubbie, the AI assistant students text. Cubbie reads your real Canvas deadlines, turns your week into one number, and asks before sharing it. The house only ever gets that number.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; margin-top: 56px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 12px; padding: 24px; background: #082F40; border: 1px solid #1E5A6E; border-radius: 22px">
+<div style="font-size: 0.875rem; font-weight: 700; color: #B9D3DA; text-align: center">iMessage with Cubbie</div>
+<div style="align-self: flex-end; max-width: 80%; padding: 12px 16px; border-radius: 20px; background: #2F80ED; color: #FFFFFF">I’m drowning, get me help with dishes and trash</div>
+<div style="align-self: flex-start; max-width: 85%; padding: 12px 16px; border-radius: 20px; background: #E9EEF0; color: #10242E">you’re busy 2/10 this week. share just that with your house’s bailout agents? nothing else leaves.</div>
+<div style="align-self: flex-end; max-width: 80%; padding: 12px 16px; border-radius: 20px; background: #2F80ED; color: #FFFFFF">yes</div>
+<div style="align-self: flex-start; max-width: 85%; padding: 12px 16px; border-radius: 20px; background: #E9EEF0; color: #10242E">your Cubbie asked the house for cover.</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<sc-for list="{{flow}}" as="f" hint-placeholder-count="4">
+<div style="display: flex; gap: 18px; align-items: flex-start">
+<div style="flex: none; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; background: {{ring}}; color: #0B3F55; font-weight: 700">{{f.n}}</div>
+<div style="min-width: 0">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.3rem">{{f.title}}</h3>
+<p style="margin: 6px 0 0; color: #D6E8EC">{{f.body}}</p>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section id="demo" style="max-width: 1200px; margin: 0 auto; padding: 104px 32px 72px; box-sizing: border-box">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; line-height: 1.05; letter-spacing: -0.02em">See it in 60 seconds</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px; align-items: stretch">
+<div style="flex: 1 1 520px; min-width: 0; min-height: 300px; display: flex; align-items: center; justify-content: center; padding: 32px; box-sizing: border-box; border: 2px dashed #9DB5BC; border-radius: 18px; background: #FFFFFF; text-align: center; color: #4A5D66; font-weight: 700">[ADD DEMO VIDEO LINK]</div>
+<ol style="flex: 1 1 340px; min-width: 0; margin: 0; padding-left: 1.4rem; display: flex; flex-direction: column; gap: 14px; color: #3A4D56">
+<sc-for list="{{demo}}" as="d" hint-placeholder-count="5">
+<li>{{d.text}}</li>
+</sc-for>
+</ol>
+</div>
+</section>
+
+<section id="setup" style="max-width: 1200px; margin: 0 auto; padding: 40px 32px 104px; box-sizing: border-box">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 3rem; line-height: 1.05; letter-spacing: -0.02em">Try it with your house</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 40px">
+<div style="flex: 1 1 400px; min-width: 0; padding: 32px; background: #FFFFFF; border: 1px solid #D3E0E3; border-radius: 18px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem">Join a house</h3>
+<ol style="margin: 16px 0 0; padding-left: 1.4rem; display: flex; flex-direction: column; gap: 10px; color: #3A4D56">
+<li>Join the house’s Discord and allow DMs from server members.</li>
+<li>Type <code>/join</code> in #agent-floor.</li>
+<li>Set your private profile with <code>/me busy</code>, <code>/me dislike</code> and <code>/me cap</code>.</li>
+<li>Optional: install the Bailout Link skill on your Cubbie so your busy level comes from Canvas.</li>
+</ol>
+</div>
+<div style="flex: 1 1 400px; min-width: 0; padding: 32px; background: #FFFFFF; border: 1px solid #D3E0E3; border-radius: 18px">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.5rem">Start a house</h3>
+<ol style="margin: 16px 0 0; padding-left: 1.4rem; display: flex; flex-direction: column; gap: 10px; color: #3A4D56">
+<li>Clone the repo and install the three Python packages.</li>
+<li>Create a Discord bot, turn on Message Content, and invite it.</li>
+<li>Make an #agent-floor channel and fill in <code>.env</code>.</li>
+<li>Run <code>python3 bot.py</code>, then <code>/help</code>.</li>
+</ol>
+<a href="https://github.com/SrujanRudrapati/bailout" style="display: inline-flex; align-items: center; min-height: 48px; margin-top: 20px; padding: 0 22px; border-radius: 999px; background: #0B3F55; color: #FFFFFF; font-weight: 700; text-decoration: none">Setup guide on GitHub</a>
+</div>
+</div>
+</section>
+
+<footer style="background: #082F40; color: #D6E8EC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<span style="display: flex; align-items: center; gap: 10px; color: #FFFFFF; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 1.2rem">
+<svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#FFFFFF" stroke-width="20"></circle><circle cx="50" cy="50" r="34" fill="none" stroke="{{ring}}" stroke-width="20" stroke-dasharray="26.7 26.7" stroke-dashoffset="13"></circle></svg>
+Bailout</span>
+<span>Built at DevHacks 2026 for the Cubbie Hackathon, Track 2.</span>
+<a href="https://github.com/SrujanRudrapati/bailout" style="color: #FFFFFF; font-weight: 700">Source code</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"ring":{"editor":"color","default":"#FFC93C","options":["#FFC93C","#FF8A5B","#7FD3DC"]},"$preview":{"width":1440,"height":5000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      ring: this.props.ring ?? "#FFC93C",
+      floor: [
+        { who: "Bailout", text: "Maya’s Cubbie says: swamped this week (busy: high). Agents, bids on dishes please." },
+        { who: "Bailout", text: "Jordan can do dishes for 5.2 credits (busy: low)." },
+        { who: "Bailout", text: "Priya can do dishes for 9.0 credits (busy: medium)." },
+        { who: "Bailout", text: "Jordan’s taking dishes for 9.0 credits." },
+        { who: "Bailout", text: "Jordan finished dishes for Maya. +9.0 credits to Jordan." }
+      ],
+      steps: [
+        { n: "1", title: "Your agent notices", body: "You text Cubbie that you’re drowning, or run /bailout in Discord. Your agent asks you first, then posts only how busy you are." },
+        { n: "2", title: "Agents bid in private", body: "Each roommate’s agent works out a bid from how much they mind the chore and how busy they are. The lowest bid wins and earns the second-lowest bid in credits." },
+        { n: "3", title: "The winner says yes", body: "They get a private message: take it, or pass. A pass quietly moves the chore to the next agent. Nobody is told who passed." },
+        { n: "4", title: "The favor comes back", body: "When the job is done, credits move on the ledger. When the helper is the one drowning, the people who owe them are asked first." }
+      ],
+      promises: [
+        { title: "Everyone wants fewer chores.", body: "The agents settle it with a sealed bid, so the chore goes to whoever it costs the least, and they’re paid fairly for it." },
+        { title: "Nobody learns why.", body: "Other agents see a busy band and a bid. Never your deadlines, your grades, how much you hate dishes, or who said no." },
+        { title: "Nothing happens without your yes.", body: "Your agent asks before posting a request, before taking a task, before going over your credit cap, and before a payback." }
+      ],
+      ledger: [
+        { name: "Maya", value: "−19.5" },
+        { name: "Jordan", value: "+19.5" },
+        { name: "Priya", value: "0.0" }
+      ],
+      flow: [
+        { n: "1", title: "You text Cubbie", body: "“I’m drowning, get me help with dishes and trash.”" },
+        { n: "2", title: "Cubbie reads your Canvas", body: "It scores your next seven days of assignments, quizzes and exams into one busy level." },
+        { n: "3", title: "Cubbie asks before sharing", body: "Only your busy level, the chores and your Discord ID leave. No courses, grades or dates." },
+        { n: "4", title: "The house starts bidding", body: "The request reaches the house bot through a small relay, and the agents bid within seconds." }
+      ],
+      demo: [
+        { text: "Maya texts Cubbie that she’s drowning and says yes to sharing her busy level." },
+        { text: "Jordan’s and Priya’s agents bid on #agent-floor, showing only a busy band and credits." },
+        { text: "Jordan gets a private “take it?” and accepts. The ledger moves when he’s done." },
+        { text: "/shared shows exactly what each agent sent, and everything that stayed private." },
+        { text: "Weeks later Jordan is swamped, and Maya’s agent is first in line to help." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
